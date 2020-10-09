@@ -1,0 +1,17 @@
+{
+  "overwrite": true,
+  "schema": "http://localhost:3000/graphql",
+  "documents": null,
+  "generates": {
+    "src/generated/graphql.ts": {
+      "config": {
+        "contextType": "../graphql/interfaces/GraphQLContext#GraphQLContext"
+      },
+      "plugins": [
+        "typescript",
+        "typescript-resolvers",
+        "typescript-document-nodes"
+      ]
+    }
+  }
+}
