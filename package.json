@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "concurrently --kill-others \"tsc -w\" \"nodemon dist/index.js\"",
-    "start": "nodemon --exec ts-node src/index.ts",
+    "start": "node dist/index.js",
     "build": "tsc",
     "generate": "graphql-codegen --config codegen.json"
   },
@@ -33,6 +33,7 @@
   },
   "dependencies": {
     "@prisma/cli": "^2.8.1",
+    "@prisma/client": "^2.8.1",
     "apollo-server-koa": "^2.18.2",
     "graphql": "^15.3.0",
     "koa": "^2.13.0"

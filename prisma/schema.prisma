@@ -1,0 +1,47 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model client_pc {
+  id           Int      @id @default(autoincrement())
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @default(now())
+  name         String?
+  macAddresses String
+  isOnline     Int      @default(0)
+  isOccupied   Int      @default(0)
+  socketID     String?
+}
+
+model role {
+  id              Int               @id @default(autoincrement())
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @default(now())
+  name            String            @unique
+  user_roles_role user_roles_role[]
+}
+
+model user {
+  id              Int               @id @default(autoincrement())
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @default(now())
+  username        String
+  password        String
+  user_roles_role user_roles_role[]
+}
+
+model user_roles_role {
+  userId Int
+  roleId Int
+  role   role @relation(fields: [roleId], references: [id])
+  user   user @relation(fields: [userId], references: [id])
+
+  @@id([userId, roleId])
+  @@index([roleId], name: "IDX_4be2f7adf862634f5f803d246b")
+  @@index([userId], name: "IDX_5f9286e6c25594c6b88c108db7")
+}

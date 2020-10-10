@@ -5,7 +5,11 @@
   "generates": {
     "src/generated/graphql.ts": {
       "config": {
-        "contextType": "../graphql/interfaces/GraphQLContext#GraphQLContext"
+        "useIndexSignature": true,
+        "contextType": "../graphql/interfaces/GraphQLContext#GraphQLContext",
+        "mappers": {
+          "User": "@prisma/client/index.d#user"
+        }
       },
       "plugins": [
         "typescript",
